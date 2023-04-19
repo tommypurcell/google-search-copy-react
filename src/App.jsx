@@ -1,4 +1,5 @@
 import logo from './logo.svg'
+import Result from './Result'
 import './App.css'
 
 let data = [
@@ -70,25 +71,7 @@ function App() {
         {/* Start of single result */}
         {/* map array of object with results */}
         {data.map((result, index) => (
-          <div key={index} className="search-result">
-            <span>{result.url}</span>
-            <div>
-              <a href={result.url}>
-                <h2>{result.title}</h2>
-              </a>
-            </div>
-            <div>
-              <p>{result.description}</p>
-              <ul>
-                {/* map array of objects with links */}
-                {result.links.map((link, idx) => (
-                  <li key={idx}>
-                    <a href={link.url}>{link.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <Result result={result} index={index} />
         ))}
         {/* End of single result */}
       </div>
