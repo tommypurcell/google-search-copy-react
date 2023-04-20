@@ -1,77 +1,94 @@
 import logo from './logo.svg'
 import './App.css'
-
-let data = [
-  {
-    title: 'JS testing',
-    description: 'The best JavaScript tutorials in the galaxy!',
-    url: 'www.testing.com',
-    links: [
-      {
-        title: 'JS for Beginner tests',
-        url: 'https://www.w3schools.com/js',
-      },
-      {
-        title: 'JS for the Web',
-        url: 'https://www.w3schools.com/js',
-      },
-    ],
-  },
-  {
-    title: 'Tutorial - W3School',
-    description:
-      'Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL...',
-    url: 'developer.mozilla.org',
-    links: [
-      {
-        title: 'JS Introduction',
-        url: 'https://www.w3schools.com/js/js_intro.asp',
-      },
-      {
-        title: 'JS Functions',
-        url: 'https://www.w3schools.com/js/js_functions.asp',
-      },
-    ],
-  },
-  {
-    title: 'JavaScript | MDN',
-    description:
-      'JavaScript is the programming language of the Web. JavaScript is easy to learn. This tutorial will teach you JavaScript from basic to advanced. Start learning ...',
-    url: 'developer.mozilla.org',
-    links: [
-      {
-        title: 'JavaScript Operator',
-        url: 'https://www.w3schools.com/js/js_examples.asp',
-      },
-      {
-        title: 'JavaScript Code',
-        url: 'https://www.w3schools.com/js/js_functions.asp',
-      },
-      {
-        title: 'JavaScript Meaning',
-        url: 'https://www.w3schools.com/js/js_functions.asp',
-      },
-    ],
-  },
-]
-
-//  takes a string parameter then returns an array from the data array that contains only results where the string parameter can be found in either the title, description or url of the element.
-function search(e) {
-  e.preventDefault()
-  console.log(e.target.searchBar.value)
-  let str = e.target.searchBar.value
-  let matchingResults = []
-
-  data.map((result, index) => {
-    if (result.title.toLowerCase().includes(str.toLowerCase())) {
-      matchingResults.push(result)
-      console.log(matchingResults)
-      console.log('matching results has been updated')
-    }
-  })
-}
+import { useState } from 'react'
 
 function App() {
+  // states
+  const [results, setResults] = useState([])
+  // data
+  let data = [
+    {
+      title: 'JS testing',
+      description: 'The best JavaScript tutorials in the galaxy!',
+      url: 'www.testing.com',
+      links: [
+        {
+          title: 'JS for Beginner tests',
+          url: 'https://www.w3schools.com/js',
+        },
+        {
+          title: 'JS for the Web',
+          url: 'https://www.w3schools.com/js',
+        },
+      ],
+    },
+    {
+      title: 'Tutorial - W3School',
+      description:
+        'Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript, SQL...',
+      url: 'developer.mozilla.org',
+      links: [
+        {
+          title: 'JS Introduction',
+          url: 'https://www.w3schools.com/js/js_intro.asp',
+        },
+        {
+          title: 'JS Functions',
+          url: 'https://www.w3schools.com/js/js_functions.asp',
+        },
+      ],
+    },
+    {
+      title: 'JavaScript | MDN',
+      description:
+        'JavaScript is the programming language of the Web. JavaScript is easy to learn. This tutorial will teach you JavaScript from basic to advanced. Start learning ...',
+      url: 'developer.mozilla.org',
+      links: [
+        {
+          title: 'JavaScript Operator',
+          url: 'https://www.w3schools.com/js/js_examples.asp',
+        },
+        {
+          title: 'JavaScript Code',
+          url: 'https://www.w3schools.com/js/js_functions.asp',
+        },
+        {
+          title: 'JavaScript Meaning',
+          url: 'https://www.w3schools.com/js/js_functions.asp',
+        },
+      ],
+    },
+  ]
+  // function
+  //  takes a string parameter then returns an array from the data array that contains only results where the string parameter can be found in either the title, description or url of the element.
+  function search(e) {
+    e.preventDefault()
+    console.log(e.target.searchBar.value)
+    let str = e.target.searchBar.value
+    let matchingResults = []
+
+    // data.map((result, index) => {
+    //   let resultsArray = []
+    //   if (result.title.toLowerCase().includes(str.toLowerCase())) {
+    //     console.log(result)
+    //     // setResults(results.p)
+
+    //     results.push(result)
+    //     console.log(matchingResults)
+    //     console.log('matching results has been updated')
+    //   }
+    //   console.log(results)
+    //   setResults(results)
+    //   // return resultsArray
+    // })
+
+    const filteredResults = data.filter((result) =>
+      result.title.toLowerCase().includes(str.toLowerCase())
+    )
+    setResults(filteredResults)
+    console.log(filteredResults)
+  }
+  // return
   return (
     <>
       <div className="navigation">
@@ -81,11 +98,11 @@ function App() {
           <button className="search-button">Search</button>
         </form>
       </div>
-      <span className="num-results">{data.length} Results</span>
+      <span className="num-results">{results.length} Results</span>
       <div className="wrapper">
         {/* Start of single result */}
         {/* map array of object with results */}
-        {data.map((result, index) => (
+        {results.map((result, index) => (
           <div key={index} className="search-result">
             <span>{result.url}</span>
             <div>
