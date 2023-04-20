@@ -89,7 +89,14 @@ function App() {
       result.title.toLowerCase().includes(str.toLowerCase())
     )
     setResults(filteredResults)
+
+    // if search bar is empty dont show any results
+    if (str == '') {
+      let emptyArr = []
+      setResults(emptyArr)
+    }
     console.log(filteredResults)
+    console.log(results)
   }
   // return
   return (
