@@ -5,6 +5,8 @@ import { useState } from 'react'
 function App() {
   // states
   const [results, setResults] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+
   // data
   let data = [
     {
@@ -61,10 +63,11 @@ function App() {
   ]
   // function
   //  takes a string parameter then returns an array from the data array that contains only results where the string parameter can be found in either the title, description or url of the element.
-  function search(e) {
+  function setValue(str) {
+    setSearchTerm(str)
+  }
+  function search(e, str) {
     e.preventDefault()
-    console.log(e.target.searchBar.value)
-    let str = e.target.searchBar.value
     let matchingResults = []
 
     // data.map((result, index) => {
@@ -93,8 +96,12 @@ function App() {
     <>
       <div className="navigation">
         <img src="images/google.png" alt="google-image" className="logo" />
-        <form onSubmit={(e) => search(e)}>
-          <input type="text" name="searchBar" />
+        <form onSubmit={(e) => search(e, searchTerm)}>
+          <input
+            type="text"
+            name="searchBar"
+            onKeyUp={(e) => setValue(e.target.value)}
+          />
           <button className="search-button">Search</button>
         </form>
       </div>
