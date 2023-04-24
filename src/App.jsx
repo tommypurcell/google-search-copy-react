@@ -26,6 +26,7 @@ function App() {
 
     console.log(results)
     apiSearch()
+    console.log(results)
   }
 
   // access api
@@ -34,13 +35,14 @@ function App() {
       'https://project-google-search-api-demo.herokuapp.com/results',
       {
         params: {
-          search: 'mozilla',
+          search: searchTerm,
         },
       }
     )
-    console.log(searchResult.data)
     setResults(searchResult.data)
+    console.log(results)
   }
+
   // return
   return (
     <>
@@ -52,6 +54,7 @@ function App() {
             name="searchBar"
             onKeyUp={(e) => setValue(e.target.value)}
           />
+
           <button className="search-button">Search</button>
         </form>
       </div>
