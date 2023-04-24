@@ -2,7 +2,6 @@ import logo from './logo.svg'
 import Result from './Result'
 import './App.css'
 import { useState } from 'react'
-import Result from './Result'
 
 function App() {
   // states
