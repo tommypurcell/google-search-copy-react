@@ -2,6 +2,7 @@ import logo from './logo.svg'
 import Result from './Result'
 import './App.css'
 import { useState } from 'react'
+import axios from 'axios'
 
 function App() {
   // states
@@ -70,6 +71,20 @@ function App() {
   function search(e, str) {
     e.preventDefault()
     let matchingResults = []
+
+    // access api
+    const apiSearch = async () => {
+      let searchResult = await axios.get(
+        'https://project-google-search-api-demo.herokuapp.com/results',
+        {
+          params: {
+            search: 'javascript',
+          },
+        }
+      )
+    }
+
+    console.log('testing api' + apiSearch())
 
     // data.map((result, index) => {
     //   let resultsArray = []
