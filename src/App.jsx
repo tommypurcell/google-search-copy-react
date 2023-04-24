@@ -14,6 +14,8 @@ function App() {
   function setValue(str) {
     setSearchTerm(str)
   }
+
+  // search function is called when form is submitted
   function search(e, str) {
     e.preventDefault()
     let matchingResults = []
@@ -25,6 +27,7 @@ function App() {
     }
 
     console.log(results)
+    // call api search which will change state variable results
     apiSearch()
     console.log(results)
   }
