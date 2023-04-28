@@ -18,7 +18,6 @@ function App() {
   // search function is called when form is submitted
   function search(e, str) {
     e.preventDefault()
-    let matchingResults = []
 
     // if search bar is empty dont show any results
     if (str == '') {
@@ -26,10 +25,8 @@ function App() {
       setResults(emptyArr)
     }
 
-    console.log(results)
     // call api search which will change state variable results
     apiSearch()
-    console.log(results)
   }
 
   // access api
@@ -39,8 +36,8 @@ function App() {
         search: searchTerm,
       },
     })
+
     setResults(searchResult.data)
-    console.log(results)
   }
 
   // return
@@ -59,12 +56,16 @@ function App() {
         </form>
       </div>
       <span className="num-results">{results.length} Results</span>
+
       <div className="wrapper">
         {/* Start of single result */}
         {/* map array of object with results */}
         {results.map((result, index) => (
           <Result result={result} key={index} />
         ))}
+
+        {/*  */}
+        {/*  */}
         {/* End of single result */}
       </div>
     </>

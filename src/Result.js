@@ -11,11 +11,12 @@ function Result({ result, index }) {
         <p>{result.description}</p>
         <ul>
           {/* map array of objects with links */}
-          {result.links.map((link, idx) => (
-            <li key={idx}>
-              <a href={link.url}>{link.title}</a>
-            </li>
-          ))}
+          {result.links &&
+            result.links.map((link, idx) => (
+              <li key={idx}>
+                <a href={link.url}>{link.title}</a>
+              </li>
+            ))}
         </ul>
       </div>
     </div>
