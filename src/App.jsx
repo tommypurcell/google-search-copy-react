@@ -36,7 +36,6 @@ function App() {
         search: searchTerm,
       },
     })
-
     setResults(searchResult.data)
   }
 
@@ -64,8 +63,6 @@ function App() {
           <Result result={result} key={index} />
         ))}
 
-        {/*  */}
-        {/*  */}
         {/* End of single result */}
       </div>
     </>
