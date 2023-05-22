@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# React Google Search Copy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React application that mimics the functionality of Google Search. Users can enter a search term, and the application will display the search results that match the term.
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+#### Empty Search Bar
 
-### `npm start`
+![Screenshot 1](./public/images/screenshot1.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Search Results
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Screenshot 2](./public/images/screenshot2.png)
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get started with the React Google Search Copy, follow these steps:
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install the dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Start the development server:
 
-### `npm run eject`
+The application will be available at `http://localhost:3000` in your browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Enter a search term in the search bar.
+2. Press the Enter key or click the "Search" button.
+3. The application will display the search results.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### App Component
 
-## Learn More
+The `App` component is the main component of the application. It manages the search functionality and displays the search results.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### State
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `results`: An array of search results.
+- `searchTerm`: The current search term entered by the user.
 
-### Code Splitting
+#### Methods
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `setValue(str)`: Updates the `searchTerm` state with the provided string.
+- `search(e, str)`: Handles the search functionality. It prevents the default form submission, checks if the search bar is empty, and calls the `apiSearch` method to fetch the search results from the API.
+- `apiSearch()`: Sends a GET request to the API with the current `searchTerm` and updates the `results` state with the retrieved search results.
 
-### Analyzing the Bundle Size
+#### Rendering
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The `App` component renders a navigation bar with a logo and a search bar. It also displays the number of search results and a list of search result components (`Result`) for each item in the `results` array.
 
-### Making a Progressive Web App
+### Result Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The `Result` component is a child component of `App` and represents a single search result.
